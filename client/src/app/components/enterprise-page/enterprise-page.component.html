@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light cont">
+  <button class="btn btn-danger ml-auto" (click)="logout()">
+    logout
+  </button>
+</nav>
+<div class="wrapper">
+  <div id="formContent">
+    <h1 class="header-tag">Add Post</h1>
+    <form
+      #addPostForm="ngForm"
+      (ngSubmit)="addPostForm.valid && onSubmit(addPostForm)"
+    >
+      <div class="d-flex justify-content-center">
+        <div>
+          <input
+            type="text"
+            #title="ngModel"
+            [(ngModel)]="postService.selectedPost.title"
+            name="title"
+            placeholder="Title"
+            required
+          />
+          <input
+            type="text"
+            #enterprise="ngModel"
+            [(ngModel)]="postService.selectedPost.enterprise"
+            name="enterprise"
+            placeholder="Enterprise name"
+            required
+          />
+          <input
+            type="text"
+            #type="ngModel"
+            [(ngModel)]="postService.selectedPost.type"
+            name="type"
+            placeholder="Type"
+            required
+          />
+          <input
+            type="text"
+            #address="ngModel"
+            [(ngModel)]="postService.selectedPost.address"
+            name="address"
+            placeholder="address"
+            required
+          />
+          <input
+            type="text"
+            #salary="ngModel"
+            [(ngModel)]="postService.selectedPost.salary"
+            name="salary"
+            placeholder="salary"
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            #experience="ngModel"
+            [(ngModel)]="postService.selectedPost.experience"
+            name="experience"
+            placeholder="Experience"
+            required
+          />
+          <input
+            type="text"
+            #description="ngModel"
+            [(ngModel)]="postService.selectedPost.description"
+            name="description"
+            placeholder="Description"
+            required
+          />
+
+          <input
+            type="text"
+            #tags="ngModel"
+            [(ngModel)]="postService.selectedPost.tags"
+            name="tags"
+            placeholder="Tags"
+            required
+          />
+          <div class="button-wrap mt-3">
+            <label class="new-button" for="upload">upload image</label>
+            <input
+              id="upload"
+              (change)="onFileChanged($event)"
+              #fileInput
+              type="file"
+            />
+          </div>
+        </div>
+      </div>
+
+      <input type="submit" value="Add Post" />
+    </form>
+  </div>
+</div>
