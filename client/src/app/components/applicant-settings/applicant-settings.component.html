@@ -1,0 +1,30 @@
+<h1>General Account Settings</h1>
+
+<form
+  #signInForm="ngForm"
+  (ngSubmit)="signInForm.valid && onSubmit(signInForm)"
+>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input
+      placeholder="Email"
+      type="email"
+      matInput
+      [(ngModel)]="userModel.email"
+      name="email"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      placeholder="Password"
+      type="password"
+      matInput
+      [(ngModel)]="userModel.password"
+      name="password"
+    />
+  </mat-form-field>
+
+  <button mat-button color="accent" type="submit">Submit</button>
+</form>

@@ -6,6 +6,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { ApplicantPageComponent } from './components/applicant-page/applicant-page.component';
 import { EnterprisePageComponent } from './components/enterprise-page/enterprise-page.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { ApplicantSettingsComponent } from './components/applicant-settings/applicant-settings.component';
+import { ApplicantPostsComponent } from './components/applicant-posts/applicant-posts.component';
 import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   {
@@ -42,6 +44,16 @@ const routes: Routes = [
     data: {
       role: 'admin',
     },
+  },
+  {
+    path: 'applicantposts',
+    component: ApplicantPageComponent,
+    children: [{ path: '', component: ApplicantPostsComponent }],
+  },
+  {
+    path: 'applicantsettings',
+    component: ApplicantPageComponent,
+    children: [{ path: '', component: ApplicantSettingsComponent }],
   },
 ];
 

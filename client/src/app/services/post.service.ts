@@ -22,15 +22,15 @@ export class PostService {
   };
   constructor(private http: HttpClient) {}
   createPost(post: FormData) {
-    return this.http.post('addpost', post);
+    return this.http.post('http://localhost:5000/addpost', post);
   }
   getPosts() {
-    return this.http.get('getAllposts/');
+    return this.http.get('http://localhost:5000/getAllposts/');
   }
   deletePost(id: string) {
-    return this.http.delete('deletepost/' + id);
+    return this.http.delete('http://localhost:5000/deletepost/' + id);
   }
   testPost(image: FormData) {
-    return this.http.post('addpost', image);
+    return this.http.post('http://localhost:5000/addpost', image);
   }
 }

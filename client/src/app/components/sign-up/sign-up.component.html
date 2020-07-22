@@ -1,4 +1,4 @@
-<form
+<!-- <form
   #signUpForm="ngForm"
   (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)"
 >
@@ -79,12 +79,52 @@
   <input type="submit" value="Sign Up" />
 </form>
 
-<!-- Success message -->
 <div class="success" *ngIf="showSuccessMessage">
   Saved successfully
 </div>
 
-<!-- Error message -->
 <div class="alert" *ngIf="serverErrorMessages">
   {{ serverErrorMessages }}
-</div>
+</div> -->
+<form
+  #signUpForm="ngForm"
+  (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)"
+>
+  <mat-form-field>
+    <mat-label>Full Name</mat-label>
+    <input
+      placeholder="Full Name"
+      matInput
+      [(ngModel)]="userService.selectedUser.name"
+      name="name"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input
+      placeholder="Email"
+      matInput
+      [(ngModel)]="userService.selectedUser.email"
+      name="email"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      placeholder="Password"
+      matInput
+      [(ngModel)]="userService.selectedUser.password"
+      name="password"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [(ngModel)]="userService.selectedUser.role" name="role">
+      <mat-option value="applicant">Applicant</mat-option>
+      <mat-option value="enterprise">Enterprise</mat-option>
+    </mat-select>
+    <mat-label>Role</mat-label>
+  </mat-form-field>
+  <button mat-button color="accent" type="submit">Submit</button>
+</form>

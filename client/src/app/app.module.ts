@@ -22,8 +22,21 @@ import { AuthGuard } from './auth/auth.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+//ng material
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ApplicantPostsComponent } from './components/applicant-posts/applicant-posts.component';
+import { ApplicantSettingsComponent } from './components/applicant-settings/applicant-settings.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +47,8 @@ import { MatIconModule } from '@angular/material/icon';
     ApplicantPageComponent,
     EnterprisePageComponent,
     AdminDashboardComponent,
+    ApplicantPostsComponent,
+    ApplicantSettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +58,15 @@ import { MatIconModule } from '@angular/material/icon';
     MatChipsModule,
     NoopAnimationsModule,
     MatIconModule,
+    MatGridListModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCardModule,
+    MatDialogModule,
   ],
   providers: [
     PostService,
