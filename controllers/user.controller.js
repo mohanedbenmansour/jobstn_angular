@@ -57,6 +57,7 @@ module.exports.signup = async (req, res, next) => {
 
 module.exports.login = async (req, res, next) => {
   try {
+    console.log(req.body);
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) return next(new Error('Email does not exist'));
@@ -67,7 +68,7 @@ module.exports.login = async (req, res, next) => {
     });
     await User.findByIdAndUpdate(user._id, { accessToken });
     res.status(200).json({
-      data: { email: user.email, role: user.role },
+      data: { email: user.email, role: user.role, userId: user._id },
       accessToken,
     });
   } catch (error) {
@@ -75,10 +76,10 @@ module.exports.login = async (req, res, next) => {
   }
 };
 //crud
-module.exports.getUsers = async (req, res, next) => {
-  const users = User.find({});
-  res.status(200).json({
-    data: users,
+module.exports.getUsers = (req, res, next) => {
+  User.find({}, (err, users) => {
+    if (err) res.status(500).json({ ermsg: err });
+    res.status(200).json({ msg: users });
   });
 };
 module.exports.getUser = async (req, res, next) => {
@@ -90,15 +91,27 @@ module.exports.getUser = async (req, res, next) => {
   });
 };
 
-module.exports.updateUser = async (req, res, next) => {
-  const update = req.body;
-  const userId = req.params.userId;
-  User.findByIdAndUpdate(userId, update);
-  const user = User.findById(userId);
-  res.status(200).json({
-    data: user,
-    message: 'User has been updated',
-  });
+module.exports.updateUser = (req, res, next) => {
+  console.log(req.body.name);
+
+  User.findByIdAndUpdate(
+    req.params.userId,
+    {
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    },
+
+    (err, doc) => {
+      if (!err) {
+        res.send(doc);
+      } else {
+        console.log(
+          'Error in user Update :' + JSON.stringify(err, undefined, 2)
+        );
+      }
+    }
+  );
 };
 
 module.exports.deleteUser = async (req, res, next) => {

@@ -34,27 +34,27 @@ router.post('/signup', userController.signup);
 router.post('/login', userController.login);
 
 router.get(
-  '/user/:userId',
+  '/getuser/:userId',
   userController.allowIfLoggedin,
   userController.getUser
 );
 
 router.get(
-  '/users',
-  userController.allowIfLoggedin,
-  userController.grantAccess('readAny', 'profile'),
+  '/getusers',
+  //userController.allowIfLoggedin,
+  //userController.grantAccess('readAny', 'profile'),
   userController.getUsers
 );
 
 router.put(
-  '/user/:userId',
-  userController.allowIfLoggedin,
-  userController.grantAccess('updateAny', 'profile'),
+  '/updateuser/:userId',
+  //userController.allowIfLoggedin,
+  // userController.grantAccess('updateAny', 'profile'),
   userController.updateUser
 );
 
 router.delete(
-  '/user/:userId',
+  '/deleteuser/:userId',
   userController.allowIfLoggedin,
   userController.grantAccess('deleteAny', 'profile'),
   userController.deleteUser

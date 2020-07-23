@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
+  id: string;
   selectedUser: User = {
     name: '',
     email: '',
@@ -70,5 +71,16 @@ export class UserService {
     let userPayload = this.getUserPayload();
     if (userPayload) return userPayload.exp > Date.now() / 1000;
     else return false;
+  }
+  //user id
+  getId() {
+    return this.id;
+  }
+  setId(id: string) {
+    this.id = id;
+  }
+  //user
+  updateUser(id: string, user: any) {
+    return this.http.put('http://localhost:5000/updateuser/' + id, user);
   }
 }

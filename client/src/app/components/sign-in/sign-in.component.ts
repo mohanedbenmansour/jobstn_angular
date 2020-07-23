@@ -30,6 +30,7 @@ export class SignInComponent implements OnInit {
         this.userService.setToken(res['accessToken']);
         this.userService.setRole(res['data'].role);
         this.userService.setEmail(res['data'].email);
+        this.userService.setId(res['data'].userId);
         this.goToDashboard();
       },
       (err) => {
