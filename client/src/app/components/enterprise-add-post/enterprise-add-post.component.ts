@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { NgForm } from '@angular/forms';
 
@@ -7,18 +7,14 @@ import { Post } from 'src/app/shared/post';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-enterprise-page',
-  templateUrl: './enterprise-page.component.html',
-  styleUrls: ['./enterprise-page.component.scss'],
+  selector: 'app-enterprise-add-post',
+  templateUrl: './enterprise-add-post.component.html',
+  styleUrls: ['./enterprise-add-post.component.scss'],
 })
-export class EnterprisePageComponent implements OnInit {
-  newPost: Post;
-  postToSend: any;
-
+export class EnterpriseAddPostComponent implements OnInit {
   constructor(
     public postService: PostService,
-    private userService: UserService,
-    private router: Router
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {}
@@ -54,7 +50,7 @@ export class EnterprisePageComponent implements OnInit {
     formData.append('description', form.value.description);
     formData.append('email', this.userService.getEmail());
     formData.append('tags', form.value.tags);
-
+    formData.append('userId', this.userService.getId());
     this.postService.createPost(formData).subscribe(
       (data) => {
         console.log(data);
@@ -63,11 +59,5 @@ export class EnterprisePageComponent implements OnInit {
         console.log(err);
       }
     );
-  }
-  logout() {
-    this.userService.deleteEmail();
-    this.userService.deleteRole();
-    this.userService.deleteToken();
-    this.router.navigateByUrl('/signin');
   }
 }

@@ -19,6 +19,7 @@ export class PostService {
     description: '',
     email: '',
     tags: '',
+    userId: '',
   };
   constructor(private http: HttpClient) {}
   createPost(post: FormData) {
@@ -32,5 +33,8 @@ export class PostService {
   }
   testPost(image: FormData) {
     return this.http.post('http://localhost:5000/addpost', image);
+  }
+  getPostsByUser(id: string) {
+    return this.http.get("'http://localhost:5000/getposts/" + id);
   }
 }

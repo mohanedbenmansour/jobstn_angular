@@ -46,5 +46,9 @@ let postSchema = new mongoose.Schema({
     type: String,
     required: ['tags should not be empty'],
   },
+  userId: {
+    type: String,
+    required: ['user id should not be empty'],
+  },
 });
 module.exports = mongoose.model('post', postSchema);

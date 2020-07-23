@@ -6,11 +6,11 @@ import { PostService } from '../../services/post.service';
 import { Post } from '../../shared/post';
 import { MatDialog } from '@angular/material/dialog';
 @Component({
-  selector: 'app-applicant-posts',
-  templateUrl: './applicant-posts.component.html',
-  styleUrls: ['./applicant-posts.component.scss'],
+  selector: 'app-enterprise-view-post',
+  templateUrl: './enterprise-view-post.component.html',
+  styleUrls: ['./enterprise-view-post.component.scss'],
 })
-export class ApplicantPostsComponent implements OnInit {
+export class EnterpriseViewPostComponent implements OnInit {
   posts: Post[];
 
   constructor(
@@ -25,7 +25,7 @@ export class ApplicantPostsComponent implements OnInit {
   }
 
   readPosts() {
-    this.postService.getPostsByUser(this.userService.getId()).subscribe(
+    this.postService.getPosts().subscribe(
       (data) => {
         console.log(data);
         this.posts = data['msg'];

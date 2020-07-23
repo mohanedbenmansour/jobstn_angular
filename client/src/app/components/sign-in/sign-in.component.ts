@@ -41,7 +41,7 @@ export class SignInComponent implements OnInit {
   goToDashboard() {
     let role = this.userService.getRole();
     if (role == 'admin') this.router.navigateByUrl('/admindashboard');
-    if (role == 'enterprise') this.router.navigateByUrl('/enterprise');
-    if (role == 'applicant') this.router.navigateByUrl('/home');
+    if (role == 'enterprise') this.router.navigateByUrl('/addposts');
+    if (role == 'applicant') this.router.navigateByUrl('/applicantposts');
   }
 }

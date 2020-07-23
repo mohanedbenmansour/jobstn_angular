@@ -4,8 +4,6 @@ const roles = require('../roles');
 
 //setting up the methods
 module.exports.addPost = (req, res, next) => {
-  console.log(req.file);
-  console.log(req.body);
   const url = req.protocol + '://' + req.get('host');
   let newPost = new post({
     title: req.body.title,
@@ -18,7 +16,7 @@ module.exports.addPost = (req, res, next) => {
     description: req.body.description,
     email: req.body.email,
     tags: req.body.tags,
-
+    userId: req.body.userId,
     image: url + '/uploads/' + req.file.filename,
   });
   newPost.save((err, post) => {

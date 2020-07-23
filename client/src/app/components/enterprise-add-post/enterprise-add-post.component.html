@@ -1,0 +1,105 @@
+<h1 class="text-center">Add Post</h1>
+
+<div class="container text-center">
+  <form
+    #addPostForm="ngForm"
+    (ngSubmit)="addPostForm.valid && onSubmit(addPostForm)"
+  >
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input
+        placeholder="title"
+        type="text"
+        matInput
+        [(ngModel)]="postService.selectedPost.title"
+        name="title"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enterprise</mat-label>
+      <input
+        placeholder="enterprise"
+        type="text"
+        matInput
+        [(ngModel)]="postService.selectedPost.enterprise"
+        name="enterprise"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <input
+        placeholder="type"
+        type="text"
+        matInput
+        [(ngModel)]="postService.selectedPost.type"
+        name="type"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>address</mat-label>
+      <input
+        placeholder="address"
+        type="text"
+        matInput
+        [(ngModel)]="postService.selectedPost.address"
+        name="address"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>salary</mat-label>
+      <input
+        type="number"
+        matInput
+        [(ngModel)]="postService.selectedPost.salary"
+        name="salary"
+        placeholder="salary"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>experience</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="postService.selectedPost.experience"
+        name="experience"
+        placeholder="Experience"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>tags</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="postService.selectedPost.tags"
+        name="tags"
+        placeholder="Tags"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="postService.selectedPost.description"
+        name="description"
+        placeholder="Description"
+      />
+    </mat-form-field>
+    <div class="button-wrap mt-3">
+      <label class="new-button" for="upload">upload image</label>
+      <input
+        id="upload"
+        (change)="onFileChanged($event)"
+        #fileInput
+        type="file"
+      />
+    </div>
+    <button mat-button color="accent" type="submit">Add Post</button>
+  </form>
+</div>

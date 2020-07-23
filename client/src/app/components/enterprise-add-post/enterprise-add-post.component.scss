@@ -1,0 +1,30 @@
+.new-button {
+  display: inline-block;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #9c27b0;
+  font-size: 16px;
+  color: #fff;
+  width: 80%;
+}
+input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  top: 6px;
+  left: 0;
+  font-size: 15px;
+  color: rgb(153, 153, 153);
+}
+.button-wrap {
+  position: relative;
+}
+.header-tag {
+  color: #9c27b0;
+}
+mat-form-field {
+  width: 80%;
+}
+button {
+  width: 80%;
+}

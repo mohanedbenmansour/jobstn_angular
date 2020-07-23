@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { EnterpriseAddPostComponent } from './components/enterprise-add-post/enterprise-add-post.component';
+import { EnterpriseViewPostComponent } from './components/enterprise-view-post/enterprise-view-post.component';
+import { ApplicantPostsComponent } from './components/applicant-posts/applicant-posts.component';
+import { ApplicantSettingsComponent } from './components/applicant-settings/applicant-settings.component';
 
 import { UserService } from './services/user.service';
 import { PostService } from './services/post.service';
@@ -35,8 +39,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ApplicantPostsComponent } from './components/applicant-posts/applicant-posts.component';
-import { ApplicantSettingsComponent } from './components/applicant-settings/applicant-settings.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { ApplicantSettingsComponent } from './components/applicant-settings/appl
     AdminDashboardComponent,
     ApplicantPostsComponent,
     ApplicantSettingsComponent,
+    EnterpriseAddPostComponent,
+    EnterpriseViewPostComponent,
   ],
   imports: [
     BrowserModule,

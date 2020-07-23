@@ -8,6 +8,8 @@ import { EnterprisePageComponent } from './components/enterprise-page/enterprise
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ApplicantSettingsComponent } from './components/applicant-settings/applicant-settings.component';
 import { ApplicantPostsComponent } from './components/applicant-posts/applicant-posts.component';
+import { EnterpriseAddPostComponent } from './components/enterprise-add-post/enterprise-add-post.component';
+import { EnterpriseViewPostComponent } from './components/enterprise-view-post/enterprise-view-post.component';
 import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   {
@@ -53,6 +55,21 @@ const routes: Routes = [
   {
     path: 'applicantsettings',
     component: ApplicantPageComponent,
+    children: [{ path: '', component: ApplicantSettingsComponent }],
+  },
+  {
+    path: 'enterpriseposts',
+    component: EnterprisePageComponent,
+    children: [{ path: '', component: EnterpriseViewPostComponent }],
+  },
+  {
+    path: 'addposts',
+    component: EnterprisePageComponent,
+    children: [{ path: '', component: EnterpriseAddPostComponent }],
+  },
+  {
+    path: 'enterprisesettings',
+    component: EnterprisePageComponent,
     children: [{ path: '', component: ApplicantSettingsComponent }],
   },
 ];

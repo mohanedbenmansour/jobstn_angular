@@ -10,4 +10,5 @@ export class Post {
   email: String;
   tags: String;
   image: String;
+  userId: String;
 }
