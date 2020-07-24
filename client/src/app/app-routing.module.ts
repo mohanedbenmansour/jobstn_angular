@@ -10,6 +10,9 @@ import { ApplicantSettingsComponent } from './components/applicant-settings/appl
 import { ApplicantPostsComponent } from './components/applicant-posts/applicant-posts.component';
 import { EnterpriseAddPostComponent } from './components/enterprise-add-post/enterprise-add-post.component';
 import { EnterpriseViewPostComponent } from './components/enterprise-view-post/enterprise-view-post.component';
+import { AdminUsersListComponent } from './components/admin-users-list/admin-users-list.component';
+import { AdminPostsListComponent } from './components/admin-posts-list/admin-posts-list.component';
+import { AdminReportListComponent } from './components/admin-report-list/admin-report-list.component';
 import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   {
@@ -71,6 +74,21 @@ const routes: Routes = [
     path: 'enterprisesettings',
     component: EnterprisePageComponent,
     children: [{ path: '', component: ApplicantSettingsComponent }],
+  },
+  {
+    path: 'adminuserslist',
+    component: AdminDashboardComponent,
+    children: [{ path: '', component: AdminUsersListComponent }],
+  },
+  {
+    path: 'adminpostslist',
+    component: AdminDashboardComponent,
+    children: [{ path: '', component: AdminPostsListComponent }],
+  },
+  {
+    path: 'adminreportlist',
+    component: AdminDashboardComponent,
+    children: [{ path: '', component: AdminReportListComponent }],
   },
 ];
 

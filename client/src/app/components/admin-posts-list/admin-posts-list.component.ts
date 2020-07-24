@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/user';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../shared/post';
 import { MatDialog } from '@angular/material/dialog';
 @Component({
-  selector: 'app-applicant-posts',
-  templateUrl: './applicant-posts.component.html',
-  styleUrls: ['./applicant-posts.component.scss'],
+  selector: 'app-admin-posts-list',
+  templateUrl: './admin-posts-list.component.html',
+  styleUrls: ['./admin-posts-list.component.scss'],
 })
-export class ApplicantPostsComponent implements OnInit {
+export class AdminPostsListComponent implements OnInit {
   posts: Post[];
 
   constructor(

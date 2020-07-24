@@ -5,12 +5,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-  id: string;
   selectedUser: User = {
     name: '',
     email: '',
     password: '',
     role: '',
+    id: '',
   };
   noAuthHeader = { headers: new HttpHeaders({ NoAuth: 'True' }) };
   constructor(private http: HttpClient) {}
@@ -74,13 +74,20 @@ export class UserService {
   }
   //user id
   getId() {
-    return this.id;
+    return localStorage.getItem('id');
   }
+
   setId(id: string) {
-    this.id = id;
+    localStorage.setItem('id', id);
   }
-  //user
+  deleteId() {
+    localStorage.removeItem('id');
+  }
+  //crud
   updateUser(id: string, user: any) {
     return this.http.put('http://localhost:5000/updateuser/' + id, user);
+  }
+  getAllUsers() {
+    return this.http.get('http://localhost:5000/getusers');
   }
 }

@@ -21,11 +21,12 @@ export class EnterpriseViewPostComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.userService.getId());
     this.readPosts();
   }
 
   readPosts() {
-    this.postService.getPosts().subscribe(
+    this.postService.getPostsByUser(this.userService.getId()).subscribe(
       (data) => {
         console.log(data);
         this.posts = data['msg'];

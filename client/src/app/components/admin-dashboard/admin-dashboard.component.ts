@@ -20,6 +20,7 @@ export class AdminDashboardComponent implements OnInit {
     this.userService.deleteEmail();
     this.userService.deleteRole();
     this.userService.deleteToken();
+    this.userService.deleteId();
     this.router.navigateByUrl('/signin');
   }
 }

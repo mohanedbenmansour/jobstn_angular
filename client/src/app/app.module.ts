@@ -19,6 +19,8 @@ import { FormsModule } from '@angular/forms';
 import { ApplicantPageComponent } from './components/applicant-page/applicant-page.component';
 import { EnterprisePageComponent } from './components/enterprise-page/enterprise-page.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminUsersListComponent } from './components/admin-users-list/admin-users-list.component';
+import { AdminPostsListComponent } from './components/admin-posts-list/admin-posts-list.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -39,6 +41,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { AdminReportListComponent } from './components/admin-report-list/admin-report-list.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ApplicantSettingsComponent,
     EnterpriseAddPostComponent,
     EnterpriseViewPostComponent,
+    AdminUsersListComponent,
+    AdminPostsListComponent,
+    AdminReportListComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +78,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatCardModule,
     MatDialogModule,
+    MatTableModule,
   ],
   providers: [
     PostService,
