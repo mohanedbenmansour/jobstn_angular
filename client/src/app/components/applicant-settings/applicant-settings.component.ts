@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-applicant-settings',
@@ -15,10 +15,10 @@ export class ApplicantSettingsComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
-  onSubmit(form: Form) {
-    this.userService.updateUser(this.userService.getId(), form).subscribe(
+  onSubmit(form: NgForm) {
+    this.userService.updateUser(this.userService.getId(), form.value).subscribe(
       (data) => {
-        console.log('test');
+        console.log(data);
       },
       (err) => {
         console.log(err);

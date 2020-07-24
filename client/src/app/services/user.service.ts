@@ -84,8 +84,8 @@ export class UserService {
     localStorage.removeItem('id');
   }
   //crud
-  updateUser(id: string, user: any) {
-    return this.http.put('http://localhost:5000/updateuser/' + id, user);
+  updateUser(id: string, user) {
+    return this.http.post('http://localhost:5000/updateuser/' + id, user);
   }
   getAllUsers() {
     return this.http.get('http://localhost:5000/getusers');

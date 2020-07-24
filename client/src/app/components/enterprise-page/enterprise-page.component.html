@@ -1,11 +1,16 @@
 <mat-toolbar color="primary" class=".navbar">
-  <h1>Tn Jobs</h1>
-  <span routerLink="/enterpriseposts" routerLinkActive="active">My Posts</span>
-  <span routerLink="/addposts" routerLinkActive="active">Add Post</span>
-
-  <span routerLink="/enterprisesettings" routerLinkActive="active"
-    >Settings</span
+  <h1>Tn Jobs-enterprise</h1>
+  <div class="spacer"></div>
+  <a mat-button routerLink="/enterpriseposts" routerLinkActive="active"
+    >My Posts</a
   >
-  <span (click)="logout()">Logout</span>
+  <a mat-button routerLink="/addposts" routerLinkActive="active">Add Post</a>
+
+  <a mat-button routerLink="/enterprisesettings" routerLinkActive="active"
+    >Settings</a
+  >
+
+  <a mat-button (click)="logout()">Logout</a>
 </mat-toolbar>
+
 <router-outlet></router-outlet>
