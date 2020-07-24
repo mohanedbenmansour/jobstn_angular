@@ -1,6 +1,7 @@
 const post = require('../models/post.model');
 const jwt = require('jsonwebtoken');
 const roles = require('../roles');
+const User = require('../models/user.model');
 
 //setting up the methods
 module.exports.addPost = (req, res, next) => {

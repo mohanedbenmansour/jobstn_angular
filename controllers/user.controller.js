@@ -92,26 +92,28 @@ module.exports.getUser = async (req, res, next) => {
 };
 
 module.exports.updateUser = (req, res, next) => {
-  console.log(req.body.name);
-
-  User.findByIdAndUpdate(
-    req.params.userId,
-    {
+  try {
+    let updatedUser = new User({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
-    },
+    });
+    User.findByIdAndUpdate(
+      req.params.userId,
+      updatedUser,
 
-    (err, doc) => {
-      if (!err) {
-        res.send(doc);
-      } else {
-        console.log(
-          'Error in user Update :' + JSON.stringify(err, undefined, 2)
-        );
+      (err, doc) => {
+        if (!err) {
+          res.send(doc);
+        } else {
+          console.log(
+            'Error in user Update :' + JSON.stringify(err, undefined, 2)
+          );
+        }
       }
-    }
-  );
+    );
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports.deleteUser = async (req, res, next) => {

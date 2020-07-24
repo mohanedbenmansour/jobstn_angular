@@ -41,18 +41,17 @@ router.get(
 
 router.get(
   '/getusers',
-  //userController.allowIfLoggedin,
+  userController.allowIfLoggedin,
   //userController.grantAccess('readAny', 'profile'),
   userController.getUsers
 );
 
-router.put(
+router.post(
   '/updateuser/:userId',
   //userController.allowIfLoggedin,
   // userController.grantAccess('updateAny', 'profile'),
   userController.updateUser
 );
-
 router.delete(
   '/deleteuser/:userId',
   userController.allowIfLoggedin,
@@ -64,4 +63,5 @@ router.post('/addpost', upload.single('image'), postController.addPost);
 router.get('/getallposts', postController.getAllPosts);
 router.get('/getposts/:userId', postController.getPosts);
 router.delete('/deletepost/:id', postController.deletePost);
+
 module.exports = router;
