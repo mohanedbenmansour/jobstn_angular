@@ -1,8 +1,8 @@
 <h1 class="text-center pt-3">Update your info</h1>
 <div class="container text-center">
   <form
-    #updateApplicantForm="ngForm"
-    (ngSubmit)="updateApplicantForm.valid && onSubmit(updateApplicantForm)"
+    [formGroup]="profileForm"
+    (ngSubmit)="profileForm.valid && onSubmit(profileForm)"
   >
     <mat-form-field>
       <mat-label>Full Name</mat-label>
@@ -10,9 +10,11 @@
         placeholder="Full Name"
         type="email"
         matInput
-        [(ngModel)]="userModel.name"
-        name="name"
+        formControlName="name"
       />
+      <mat-error *ngIf="name.invalid && name.touched">
+        name required
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Email</mat-label>
@@ -20,11 +22,14 @@
         placeholder="Email"
         type="email"
         matInput
-        [(ngModel)]="userModel.email"
-        name="email"
+        formControlName="email"
       />
+      <mat-error *ngIf="email.invalid && email.touched">
+        invalid email
+      </mat-error>
     </mat-form-field>
 
     <button mat-button color="accent" type="submit">Update</button>
+    <mat-error *ngIf="serverErrorMessages">server error try again</mat-error>
   </form>
 </div>

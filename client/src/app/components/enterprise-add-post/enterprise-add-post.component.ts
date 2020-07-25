@@ -39,7 +39,6 @@ export class EnterpriseAddPostComponent implements OnInit {
     const formData = new FormData();
     const today = new Date();
     formData.append('image', this.image);
-
     formData.append('title', form.value.title);
     formData.append('enterprise', form.value.enterprise);
     formData.append('type', form.value.type);

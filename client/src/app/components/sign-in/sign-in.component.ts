@@ -2,28 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../shared/user';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
-  userModel = {
-    email: '',
-    password: '',
-  };
+  profileForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
+
   constructor(public userService: UserService, private router: Router) {}
 
-  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  showSuccessMessage: boolean;
-  serverErrorMessages: string;
-
+  serverErrorMessages: boolean;
+  submitted: boolean;
   ngOnInit(): void {
     if (this.userService.isLoggedIn()) this.router.navigate(['/home']);
   }
-  onSubmit(form: NgForm) {
+  onSubmit(form: FormGroup) {
+    this.submitted = true;
     this.userService.login(form.value).subscribe(
       (res) => {
         console.log(res['data'].role);
@@ -31,10 +30,12 @@ export class SignInComponent implements OnInit {
         this.userService.setRole(res['data'].role);
         this.userService.setEmail(res['data'].email);
         this.userService.setId(res['data'].userId);
+        alert('welcome to your profile');
         this.goToDashboard();
       },
       (err) => {
-        this.serverErrorMessages = err.error.message;
+        this.serverErrorMessages = true;
+        console.log(err);
       }
     );
   }
@@ -43,5 +44,8 @@ export class SignInComponent implements OnInit {
     if (role == 'admin') this.router.navigateByUrl('/adminuserslist');
     if (role == 'enterprise') this.router.navigateByUrl('/addposts');
     if (role == 'applicant') this.router.navigateByUrl('/applicantposts');
+  }
+  get email() {
+    return this.profileForm.get('email');
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-up',
@@ -8,30 +8,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  showSuccessMessage: boolean;
-  serverErrorMessages: string;
-
+  serverErrorMessages: boolean;
+  submitted: boolean;
+  profileForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
+    role: new FormControl('', [Validators.required]),
+  });
   ngOnInit(): void {}
   constructor(public userService: UserService, private router: Router) {}
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: FormGroup) {
+    this.submitted = true;
     this.userService.createUser(form.value).subscribe(
       (data) => {
-        console.log(form.value);
-        this.showSuccessMessage = true;
-        console.log(form.value);
-        setTimeout(() => (this.showSuccessMessage = false), 4000);
-        this.resetForm(form);
+        alert('you have signed up successfully');
+        form.reset();
       },
       (err) => {
         console.log(form.value);
-        this.serverErrorMessages = 'Something went wrong.Please contact admin.';
+        this.serverErrorMessages = true;
       }
     );
   }
-  resetForm(form: NgForm) {
-    form.resetForm();
-    this.serverErrorMessages = '';
+  get email() {
+    return this.profileForm.get('email');
+  }
+  get name() {
+    return this.profileForm.get('name');
+  }
+  get password() {
+    return this.profileForm.get('password');
+  }
+  get role() {
+    return this.profileForm.get('role');
   }
 }

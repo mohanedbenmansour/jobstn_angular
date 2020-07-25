@@ -92,14 +92,15 @@ module.exports.getUser = async (req, res, next) => {
 };
 
 module.exports.updateUser = (req, res, next) => {
+  console.log(req.params.userId);
+
   try {
-    let updatedUser = new User({
-      name: req.body.name,
-      email: req.body.email,
-    });
     User.findByIdAndUpdate(
       req.params.userId,
-      updatedUser,
+      {
+        name: req.body.name,
+        email: req.body.email,
+      },
 
       (err, doc) => {
         if (!err) {

@@ -41,7 +41,7 @@ router.get(
 
 router.get(
   '/getusers',
-  userController.allowIfLoggedin,
+  //userController.allowIfLoggedin,
   //userController.grantAccess('readAny', 'profile'),
   userController.getUsers
 );

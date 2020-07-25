@@ -14,7 +14,7 @@ import { ApplicantSettingsComponent } from './components/applicant-settings/appl
 import { UserService } from './services/user.service';
 import { PostService } from './services/post.service';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ApplicantPageComponent } from './components/applicant-page/applicant-page.component';
 import { EnterprisePageComponent } from './components/enterprise-page/enterprise-page.component';
@@ -42,6 +42,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+
 import { AdminReportListComponent } from './components/admin-report-list/admin-report-list.component';
 
 @NgModule({
@@ -79,6 +80,7 @@ import { AdminReportListComponent } from './components/admin-report-list/admin-r
     MatCardModule,
     MatDialogModule,
     MatTableModule,
+    ReactiveFormsModule,
   ],
   providers: [
     PostService,
